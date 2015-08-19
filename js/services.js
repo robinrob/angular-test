@@ -1,0 +1,1 @@
+var testServices = angular.module('testServices', ['ngResource'])
