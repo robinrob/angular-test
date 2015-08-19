@@ -7,8 +7,8 @@ testControllers.controller('SidebarPageCtrl', ['$scope',
         //    "content": "Hello Aside<br />This is a multiline message!"
         //};
 
-        $scope.aside = {
-            title: "Sidebar",
-            templateUrl: '/partials/sidebar.html'
-        };
+        //$scope.aside = {
+        //    title: "Sidebar",
+        //    templateUrl: '/partials/sidebar.html'
+        //};
     }])

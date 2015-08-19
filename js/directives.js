@@ -13,13 +13,16 @@ testDirectives.directive('testNav', function() {
 testDirectives.directive('testSidebar', function() {
     return {
         restrict: 'A',
-        title: 'Sidebar from directive',
-        templateUrl: 'partials/sidebar.html',
         controller: ['$scope', '$aside',
             function($scope, $aside) {
+                console.log("SIDEBAR CONTROLLER")
                 // Pre-fetch an external template populated with a custom scope
-                var myAside = $aside({scope: $scope, template: 'partials/sidebars.html', show: true});
-                myAside.show()
+                var myAside = $aside({scope: $scope, title: "Sidebar from directive", template: 'partials/sidebar.html', show: false});
+
+                $scope.toggleSidebar = function() {
+                    console.log("SHOW SIDEBAR")
+                    myAside.show()
+                }
             }
         ]
     }

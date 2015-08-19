@@ -5,18 +5,20 @@
         <div class='recipe-main-label'>SIDEBAR PAGE</div>
 
             <!-- Button to trigger a default aside with a scope as an object {title:'', content:'', etc.} -->
-            <button type="button" class="btn btn-lg btn-primary" bs-aside="aside">Click to toggle aside
+            <button type="button" class="btn btn-lg btn-primary" ng-click="toggleSidebar()">Click to toggle aside
                 <br>
                 <small>(using an object)</small>
             </button>
 
-            <!-- Button to trigger a default aside with a scope as an object {title:'', content:'', etc.} -->
-            <button type="button" class="btn btn-lg btn-primary" bs-aside="aside">Click to toggle aside
-                <br>
-                <small>(using an object)</small>
-            </button>
+            <div test-sidebar></div>
 
-            <test-sidebar></test-sidebar>
+             <!--Button to trigger a default aside with a scope as an object {title:'', content:'', etc.}-->
+            <!--<button type="button" class="btn btn-lg btn-primary" bs-aside="aside" data-title="Sidebar" data-template-url="partials/sidebar.html">Click to toggle aside-->
+                <!--<br>-->
+                <!--<small>(using an object)</small>-->
+            <!--</button>-->
+
+
 
         <!--&lt;!&ndash; Button to trigger a default modal with a scope as an object {title:'', content:'', etc.} &ndash;&gt;-->
         <!--<button type="button" class="btn btn-lg btn-primary" data-animation="am-fade-and-scale" data-placement="center" bs-modal="modal">Click to toggle modal-->
