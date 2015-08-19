@@ -7,7 +7,6 @@ require('../bower_components/angular-route/angular-route.min.js')
 require('../bower_components/angular-resource/angular-resource.min.js')
 require('../bower_components/angular-animate/angular-animate.min.js')
 require('../bower_components/angular-strap/dist/angular-strap.min.js')
-require('../bower_components/angular-strap/dist/angular-strap.tpl.min.js')
 
 require('./services.js')
 require('./controllers.js')
