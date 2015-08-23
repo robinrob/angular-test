@@ -1,8 +1,9 @@
-<div nav-title='Test App' test-nav></div>
+<div class="main">
+    <div class='container' id='container'>
+        <div class='post-wrapper'>
+            <h1>SIDEBAR PAGE</h1>
 
-<div class='container' id='container'>
-    <div class='post-wrapper'>
-        <div class='recipe-main-label'>SIDEBAR PAGE</div>
+            <test-sidebar />
 
             <!-- Button to trigger a default aside with a scope as an object {title:'', content:'', etc.} -->
             <button type="button" class="btn btn-lg btn-primary" ng-click="toggleSidebar()">Click to toggle aside
@@ -10,38 +11,37 @@
                 <small>(using an object)</small>
             </button>
 
-            <div test-sidebar></div>
+            <!--Button to trigger a default aside with a scope as an object {title:'', content:'', etc.}-->
+            <button type="button" class="btn btn-lg btn-primary" bs-aside="aside" data-title="Sidebar"
+                    data-template-url="partials/sidebar.html">Click to toggle aside
+                <br>
+                <small>(using an object)</small>
+            </button>
 
-             <!--Button to trigger a default aside with a scope as an object {title:'', content:'', etc.}-->
-            <!--<button type="button" class="btn btn-lg btn-primary" bs-aside="aside" data-title="Sidebar" data-template-url="partials/sidebar.html">Click to toggle aside-->
-                <!--<br>-->
-                <!--<small>(using an object)</small>-->
+
+            <!--&lt;!&ndash; Button to trigger a default modal with a scope as an object {title:'', content:'', etc.} &ndash;&gt;-->
+            <!--<button type="button" class="btn btn-lg btn-primary" data-animation="am-fade-and-scale" data-placement="center" bs-modal="modal">Click to toggle modal-->
+            <!--<br>-->
+            <!--<small>(using an object)</small>-->
             <!--</button>-->
 
-
-
-        <!--&lt;!&ndash; Button to trigger a default modal with a scope as an object {title:'', content:'', etc.} &ndash;&gt;-->
-        <!--<button type="button" class="btn btn-lg btn-primary" data-animation="am-fade-and-scale" data-placement="center" bs-modal="modal">Click to toggle modal-->
+            <!--&lt;!&ndash; Button to trigger a default alert with a scope as an object {title:'', content:'', etc.} &ndash;&gt;-->
+            <!--<button class="btn btn-lg btn-primary" data-placement="top-right" data-container="body" data-duration="3" bs-alert="alert">Click to toggle alert-->
             <!--<br>-->
             <!--<small>(using an object)</small>-->
-        <!--</button>-->
+            <!--</button>-->
 
-        <!--&lt;!&ndash; Button to trigger a default alert with a scope as an object {title:'', content:'', etc.} &ndash;&gt;-->
-        <!--<button class="btn btn-lg btn-primary" data-placement="top-right" data-container="body" data-duration="3" bs-alert="alert">Click to toggle alert-->
-            <!--<br>-->
-            <!--<small>(using an object)</small>-->
-        <!--</button>-->
-
-        <!--&lt;!&ndash; You can use a custom html template with the `data-template` attr &ndash;&gt;-->
-        <!--<button type="button" class="btn btn-lg btn-danger" data-animation="am-fade-and-slide-top" data-template-url="partials/sidebar.html" bs-aside="aside">Custom Modal-->
+            <!--&lt;!&ndash; You can use a custom html template with the `data-template` attr &ndash;&gt;-->
+            <!--<button type="button" class="btn btn-lg btn-danger" data-animation="am-fade-and-slide-top" data-template-url="partials/sidebar.html" bs-aside="aside">Custom Modal-->
             <!--<br>-->
             <!--<small>(using data-template)</small>-->
-        <!--</button>-->
+            <!--</button>-->
 
-        <!--&lt;!&ndash; Button to trigger a default aside with a scope as an object {title:'', content:'', etc.} &ndash;&gt;-->
-        <!--<button type="button" class="btn btn-lg btn-primary" bs-aside="aside">Click to toggle aside-->
+            <!--&lt;!&ndash; Button to trigger a default aside with a scope as an object {title:'', content:'', etc.} &ndash;&gt;-->
+            <!--<button type="button" class="btn btn-lg btn-primary" bs-aside="aside">Click to toggle aside-->
             <!--<br>-->
             <!--<small>(using an object)</small>-->
-        <!--</button>-->
+            <!--</button>-->
+        </div>
     </div>
 </div>

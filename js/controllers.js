@@ -1,14 +1,10 @@
 var testControllers = angular.module('testControllers', [])
 
-testControllers.controller('SidebarPageCtrl', ['$scope',
-    function SidebarPageCtrl($scope) {
-        //$scope.aside = {
-        //    "title": "Title",
-        //    "content": "Hello Aside<br />This is a multiline message!"
-        //};
-
-        //$scope.aside = {
-        //    title: "Sidebar",
-        //    templateUrl: '/partials/sidebar.html'
-        //};
+testControllers.controller('IsolateScopeCtrl', ['$scope',
+    function IsolateScopeCtrl($scope) {
+        console.log("ISOLATE SCOPE CONTROLLER")
+        $scope.planet = {
+            name: 'Mercury',
+            star: 'Sol'
+        }
     }])

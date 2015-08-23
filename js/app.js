@@ -6,6 +6,7 @@ require('../bower_components/angular/angular.min.js')
 require('../bower_components/angular-route/angular-route.min.js')
 require('../bower_components/angular-resource/angular-resource.min.js')
 require('../bower_components/angular-animate/angular-animate.min.js')
+
 require('../bower_components/angular-strap/dist/angular-strap.min.js')
 
 require('./services.js')
@@ -24,9 +25,12 @@ var testApp = angular.module('testApp', [
 testApp.config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
         $routeProvider
-            .when('/', {
-                templateUrl: 'partials/sidebarPage.html',
-                controller: 'SidebarPageCtrl'
+            .when('/sidebar', {
+                templateUrl: 'partials/sidebarPage.html'
+            })
+            .when('/isolateScope', {
+                templateUrl: 'partials/isolateScope.html',
+                controller: 'IsolateScopeCtrl'
             })
 
         $locationProvider.html5Mode(false).hashPrefix('!');
