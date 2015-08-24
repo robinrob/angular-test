@@ -11,16 +11,14 @@ testDirectives.directive('testNav', function() {
 
 testDirectives.directive('testSidebar', function() {
     return {
-        controller: ['$scope', '$aside',
-            function($scope, $aside) {
+        controllerAs: 'sidebar',
+        controller: ['$aside',
+            function($aside) {
                 console.log("SIDEBAR CONTROLLER")
-                // Pre-fetch an external template populated with a custom scope
-                var myAside = $aside({scope: $scope, title: "Sidebar from directive", template: 'partials/sidebar.html', show: false});
 
-                $scope.toggleSidebar = function() {
-                    console.log("SHOW SIDEBAR")
-                    myAside.show()
-                }
+                this.fuck = "FUCK"
+                // Pre-fetch an external template populated with a custom scope
+                var myAside = $aside({title: "Sidebar from directive", templateUrl: 'partials/sidebar.html', show: false});
             }
         ]
     }
@@ -28,27 +26,28 @@ testDirectives.directive('testSidebar', function() {
 
 testDirectives.directive('testSharedScope', function() {
     return {
-        controller: ['$scope',
-            function($scope) {
+        controllerAs: 'shared',
+        controller: [
+            function() {
                 console.log("SHARED SCOPE CONTROLLER")
             }
         ],
-        template: "Name: {{ planet.name }}, Star: {{ planet.star }}"
+        template: "Name: {{ ctrl.planet.name }}, Star: {{ ctrl.planet.star }}"
     }
 })
 
 testDirectives.directive('testIsolatedScope', function() {
     return {
-        scope: {},
-        controller: ['$scope',
-            function($scope) {
+        controllerAs: 'isolated',
+        controller: [
+            function() {
                 console.log("ISOLATED SCOPE CONTROLLER")
-                $scope.planet = {
+                this.planet = {
                     name: 'Venus',
                     star: 'Sol'
                 }
             }
         ],
-        template: "Name: {{ planet.name }}, Star: {{ planet.star }}"
+        template: "Name: {{ isolated.planet.name }}, Star: {{ isolated.planet.star }}"
     }
 })

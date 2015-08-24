@@ -30,7 +30,8 @@ testApp.config(['$routeProvider', '$locationProvider',
             })
             .when('/isolateScope', {
                 templateUrl: 'partials/isolateScope.html',
-                controller: 'IsolateScopeCtrl'
+                controller: 'IsolateScopeCtrl',
+                controllerAs: 'ctrl'
             })
 
         $locationProvider.html5Mode(false).hashPrefix('!');
