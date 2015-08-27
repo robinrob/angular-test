@@ -16,9 +16,50 @@ testDirectives.directive('testSidebar', function() {
             function($aside) {
                 console.log("SIDEBAR CONTROLLER")
 
-                this.fuck = "FUCK"
+                this.isVisible = false
+
                 // Pre-fetch an external template populated with a custom scope
-                var myAside = $aside({title: "Sidebar from directive", templateUrl: 'partials/sidebar.html', show: false});
+                var myAside = $aside({
+                    title: "Sidebar from directive",
+                    templateUrl: 'partials/sidebar.html',
+                    show: this.isVisible,
+                    backdrop: false
+                });
+
+                this.toggle = function() {
+                    console.log("SIDEBAR TOGGLE")
+                    this.isVisible = !this.isVisible
+                    myAside.toggle()
+                    console.log("this.isVisible: " + this.isVisible)
+                }
+            }
+        ]
+    }
+})
+
+testDirectives.directive('testBootstrapSidebar', function() {
+    return {
+        controllerAs: 'sidebar',
+        controller: ['$aside',
+            function($aside) {
+                console.log("SIDEBAR CONTROLLER")
+
+                this.isVisible = false
+
+                // Pre-fetch an external template populated with a custom scope
+                var myAside = $aside({
+                    title: "Sidebar from directive",
+                    templateUrl: 'partials/bootstrapSidebar.html',
+                    show: this.isVisible,
+                    backdrop: false
+                });
+
+                this.toggle = function() {
+                    console.log("SIDEBAR TOGGLE")
+                    this.isVisible = !this.isVisible
+                    myAside.toggle()
+                    console.log("this.isVisible: " + this.isVisible)
+                }
             }
         ]
     }
@@ -51,3 +92,29 @@ testDirectives.directive('testIsolatedScope', function() {
         template: "Name: {{ isolated.planet.name }}, Star: {{ isolated.planet.star }}"
     }
 })
+
+testDirectives.directive('testChild', ['$rootScope', function($rootScope) {
+    return {
+        template: "<p>Child directive is here!</p>",
+        controllerAs: 'child',
+        controller: ['$scope',
+            function($scope) {
+                console.log("CHILD CONTROLLER")
+
+                console.log("$scope.parentMsg: " + $scope.parentMsg)
+
+                this.show = function() {
+                    console.log("CHILD SHOW")
+                }
+
+                $scope.$on('showChild', function(e) {
+                    this.show()
+                });
+            }
+        ],
+        link: function() {
+            console.log("CHILD LINK")
+            console.log("$rootScope.msgFromParent: " + $rootScope.msgFromParent)
+        }
+    }
+}])

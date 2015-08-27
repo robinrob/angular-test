@@ -28,10 +28,21 @@ testApp.config(['$routeProvider', '$locationProvider',
             .when('/sidebar', {
                 templateUrl: 'partials/sidebarPage.html'
             })
+            .when('/bootstrapSidebar', {
+                templateUrl: 'partials/bootstrapSidebarPage.html'
+            })
             .when('/isolateScope', {
                 templateUrl: 'partials/isolateScope.html',
                 controller: 'IsolateScopeCtrl',
                 controllerAs: 'ctrl'
+            })
+            .when('/popover', {
+              templateUrl: 'partials/popoverPage.html'
+            })
+            .when('/parentChild', {
+                templateUrl: 'partials/parentChild.html',
+                controller: 'ParentCtrl',
+                controllerAs: 'parent'
             })
 
         $locationProvider.html5Mode(false).hashPrefix('!');

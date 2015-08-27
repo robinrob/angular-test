@@ -88,7 +88,7 @@ gulp.task('browser-sync', function () {
         server: {
             baseDir: buildDir
         },
-        browser: 'safari'
+        browser: 'Google\ Chrome'
     })
 })
 

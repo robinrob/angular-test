@@ -23,6 +23,7 @@
     "bootstrap-additions": "~0.3.1",
     "jquery-ui": "~1.11.4",
     "lodash": "~3.10.1",
-    "angular-motion": "~0.4.2"
+    "angular-motion": "~0.4.2",
+    "bootstrap-ui": "~0.13.3"
   }
 }
