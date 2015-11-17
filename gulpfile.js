@@ -43,7 +43,7 @@ var paths = {
         stageSrc: [path.join(stageDir, 'js', '*.js')],
         libs: [path.join('js', 'libs', '*.js')],
         dest: path.join(buildDir, 'js'),
-        bower: ['bower_components/jquery/dist/jquery.js', 'bower_components/lodash/lodash.min.js', 'bower_components/angular-aside/dist/js/angular-aside.min.js']
+        bower: ['bower_components/jquery/src/jquery.js', 'bower_components/lodash/lodash.min.js', 'bower_components/angular-aside/dist/js/angular-aside.min.js']
     }
 }
 paths.watch = [

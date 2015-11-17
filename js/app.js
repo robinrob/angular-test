@@ -1,4 +1,4 @@
-global.jQuery = require ('../bower_components/jquery/dist/jquery.min.js')
+global.jQuery = require ('../bower_components/jquery/src/jquery.js')
 global._ = require('../bower_components/lodash/lodash.min.js')
 
 require('../bower_components/jquery-ui/jquery-ui.min.js')
