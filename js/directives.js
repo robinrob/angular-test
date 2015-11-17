@@ -109,6 +109,7 @@ testDirectives.directive('testChild', ['$rootScope', function($rootScope) {
 
                 $scope.$on('showChild', function(e) {
                     this.show()
+
                 });
             }
         ],

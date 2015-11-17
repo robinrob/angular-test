@@ -1,9 +1,8 @@
-global.jQuery = require ('../bower_components/jquery/src/jquery.js')
-global._ = require('../bower_components/lodash/lodash.min.js')
+require('../bower_components/angular/angular.js')
+require('../bower_components/jqueryui/jquery-ui.js');
 
-require('../bower_components/jquery-ui/jquery-ui.min.js')
-require('../bower_components/angular/angular.min.js')
-require('../bower_components/angular-route/angular-route.min.js')
+require('../bower_components/ng-lodash/build/ng-lodash.min.js');
+require('../bower_components/angular-route/angular-route.js')
 require('../bower_components/angular-resource/angular-resource.min.js')
 require('../bower_components/angular-animate/angular-animate.min.js')
 
@@ -19,7 +18,8 @@ var testApp = angular.module('testApp', [
     'mgcrea.ngStrap',
     'testControllers',
     'testServices',
-    'testDirectives'
+    'testDirectives',
+    'ngLodash'
 ])
 
 testApp.config(['$routeProvider', '$locationProvider',

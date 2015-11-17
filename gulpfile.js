@@ -86,7 +86,8 @@ gulp.task('reload', function () {
 gulp.task('browser-sync', function () {
     browserSync({
         server: {
-            baseDir: buildDir
+            baseDir: './',
+            index: 'dist/index.html'
         },
         browser: 'Google\ Chrome'
     })
