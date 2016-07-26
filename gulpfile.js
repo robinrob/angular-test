@@ -43,7 +43,7 @@ var paths = {
         stageSrc: [path.join(stageDir, 'js', '*.js')],
         libs: [path.join('js', 'libs', '*.js')],
         dest: path.join(buildDir, 'js'),
-        bower: ['bower_components/jquery/src/jquery.js', 'bower_components/lodash/lodash.min.js', 'bower_components/angular-aside/dist/js/angular-aside.min.js']
+        bower: ['bower_components/jquery/dist/jquery.js', 'bower_components/lodash/lodash.min.js', 'bower_components/angular-aside/dist/js/angular-aside.min.js']
     }
 }
 paths.watch = [
@@ -86,8 +86,7 @@ gulp.task('reload', function () {
 gulp.task('browser-sync', function () {
     browserSync({
         server: {
-            baseDir: './',
-            index: 'dist/index.html'
+            baseDir: buildDir
         },
         browser: 'Google\ Chrome'
     })
@@ -123,7 +122,7 @@ gulp.task('css-minify', function () {
         .pipe(gulp.dest(paths.css.dest))
 })
 
-gulp.task('css-dev', function (done) {
+gulp.task('css-dev', ['sass'], function (done) {
     runSequence('css-concat', done)
 })
 
@@ -165,11 +164,11 @@ gulp.task('js', function () {
 });
 
 gulp.task('build', function (done) {
-    runSequence('clean', 'html', 'sass', ['css', 'js'], 'reload', done)
+    runSequence('clean', 'html', ['css-dev', 'js'], 'reload', done)
 })
 
 gulp.task('dev-build', function (done) {
-    runSequence('clean', 'html', 'sass', ['css-dev', 'js'], 'reload', done)
+    runSequence('clean', 'html', ['css-dev', 'js'], 'reload', done)
 })
 
 gulp.task('watch', function () {

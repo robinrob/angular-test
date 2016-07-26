@@ -1,7 +1,7 @@
 {
   "name": "angular-strap",
   "description": "AngularStrap - AngularJS directives for Bootstrap",
-  "version": "2.3.6",
+  "version": "2.3.1",
   "keywords": [
     "angular",
     "bootstrap"
@@ -30,7 +30,6 @@
   "ignore": [
     "docs",
     "test",
-    "tasks",
     "CONTRIBUTING.md"
   ],
   "dependencies": {

@@ -58,16 +58,18 @@ angular.module('myApp', ['ngAnimate', 'mgcrea.ngStrap']);
 
 Clone the repo, `git clone git://github.com/mgcrea/angular-strap.git`, [download the latest release](https://github.com/mgcrea/angular-strap/zipball/master) or install with bower `bower install angular-strap --save`.
 
-You will need to have bower installed globally into your node environment.
+You will need to have bower and gulp installed globally into your node environment.
+
+> Currently, AngularStrap uses gulp 4.0 which is not yet available on npm repository, so you will need to install it from github.
 
 >
 ```bash
 $ npm install -g bower
+$ npm install -g gulpjs/gulp#4.0
 ```
 
-AngularStrap is tested with `karma` against the latest stable release of AngularJS.
 
-> AngularStrap uses gulp@4.0, you must use the local gulp instance with `$(npm bin)/gulp` for it to work (or use an alias).
+AngularStrap is tested with `karma` against the latest stable release of AngularJS.
 
 >
 ```bash
@@ -76,24 +78,25 @@ $ bower install
 $ cd docs
 $ bower install
 $ cd ..
-$ $(npm bin)/gulp test
+$ gulp test
 ```
 
 You can build the latest version using `gulp`.
 
 >
 ```bash
-$ $(npm bin)/gulp build
+$ gulp build
 ```
 
 You can quickly hack around (the docs) with:
 
 >
 ```bash
-  $ $(npm bin)/gulp serve
+  $ gulp serve
 ```
 
 You can browse to http://localhost:9090/dev.html to work on a specific directive.
+
 
 ## Contributing
 

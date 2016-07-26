@@ -95,7 +95,8 @@ testDirectives.directive('testIsolatedScope', function() {
 
 testDirectives.directive('testChild', ['$rootScope', function($rootScope) {
     return {
-        template: "<p>Child directive is here!</p>",
+        restrict: 'E',
+        templateUrl: '/partials/child.html',
         controllerAs: 'child',
         controller: ['$scope',
             function($scope) {
@@ -109,7 +110,6 @@ testDirectives.directive('testChild', ['$rootScope', function($rootScope) {
 
                 $scope.$on('showChild', function(e) {
                     this.show()
-
                 });
             }
         ],
@@ -117,5 +117,36 @@ testDirectives.directive('testChild', ['$rootScope', function($rootScope) {
             console.log("CHILD LINK")
             console.log("$rootScope.msgFromParent: " + $rootScope.msgFromParent)
         }
+    }
+}])
+
+testDirectives.directive('testChild2', ['$rootScope', function($rootScope) {
+    return {
+        restrict: 'E',
+        templateUrl: '/partials/child.html',
+        controllerAs: 'child',
+        scope: {},
+        controller: ['$scope',
+            function($scope) {
+            }
+        ]
+    }
+}])
+
+testDirectives.directive('testParent', ['$rootScope', function($rootScope) {
+    return {
+        restrict: 'E',
+        transclude: true,
+        templateUrl: '/partials/parent.html',
+        controllerAs: 'parent',
+        controller: [
+            '$scope',
+            function ($scope) {
+                var self = this
+
+                self.hello = function() {
+                    console.log("HELLO FROM PARENT!")
+                }
+            }]
     }
 }])

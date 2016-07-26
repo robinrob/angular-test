@@ -1,6 +1,6 @@
 /**
  * angular-strap
- * @version v2.3.6 - 2015-11-14
+ * @version v2.3.1 - 2015-07-19
  * @link http://mgcrea.github.io/angular-strap
  * @author Olivier Louvignes <olivier@mg-crea.com> (https://github.com/mgcrea)
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -32,12 +32,10 @@ function bsCompilerService($q, $http, $injector, $compile, $controller, $templat
       }
     });
     angular.extend(resolve, locals);
-    if (template) {
-      resolve.$template = $q.when(template);
-    } else if (templateUrl) {
+    if (templateUrl) {
       resolve.$template = fetchTemplate(templateUrl);
     } else {
-      throw new Error('Missing `template` / `templateUrl` option.');
+      resolve.$template = $q.when(template);
     }
     if (options.contentTemplate) {
       resolve.$template = $q.all([ resolve.$template, fetchTemplate(options.contentTemplate) ]).then(function(templates) {

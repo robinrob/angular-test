@@ -9,8 +9,8 @@ testControllers.controller('IsolateScopeCtrl', [
         }
     }])
 
-testControllers.controller('ParentCtrl', ['$scope', '$rootScope',
-    function IsolateScopeCtrl($scope, $rootScope) {
+testControllers.controller('ParentCtrl', ['$scope', '$rootScope', '$compile',
+    function IsolateScopeCtrl($scope, $rootScope, $compile) {
         $scope.parentMsg = "Hello from parent"
 
         console.log("PARENT CONTROLLER")

@@ -1,6 +1,6 @@
 /**
  * angular-strap
- * @version v2.3.6 - 2015-11-14
+ * @version v2.3.1 - 2015-07-19
  * @link http://mgcrea.github.io/angular-strap
  * @author Olivier Louvignes <olivier@mg-crea.com> (https://github.com/mgcrea)
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -101,9 +101,6 @@ angular.module('mgcrea.ngStrap.select', [ 'mgcrea.ngStrap.tooltip', 'mgcrea.ngSt
           $select.activate(index);
           if (options.multiple) {
             controller.$setViewValue(scope.$activeIndex.map(function(index) {
-              if (angular.isUndefined(scope.$matches[index])) {
-                return null;
-              }
               return scope.$matches[index].value;
             }));
           } else {
@@ -114,20 +111,16 @@ angular.module('mgcrea.ngStrap.select', [ 'mgcrea.ngStrap.tooltip', 'mgcrea.ngSt
         scope.$emit(options.prefixEvent + '.select', value, index, $select);
       };
       $select.$updateActiveIndex = function() {
-        if (options.multiple) {
-          if (angular.isArray(controller.$modelValue)) {
+        if (controller.$modelValue && scope.$matches.length) {
+          if (options.multiple && angular.isArray(controller.$modelValue)) {
             scope.$activeIndex = controller.$modelValue.map(function(value) {
               return $select.$getIndex(value);
             });
           } else {
-            scope.$activeIndex = [];
-          }
-        } else {
-          if (angular.isDefined(controller.$modelValue) && scope.$matches.length) {
             scope.$activeIndex = $select.$getIndex(controller.$modelValue);
-          } else {
-            scope.$activeIndex = -1;
           }
+        } else if (scope.$activeIndex >= scope.$matches.length) {
+          scope.$activeIndex = options.multiple ? [] : 0;
         }
       };
       $select.$isVisible = function() {
@@ -162,10 +155,8 @@ angular.module('mgcrea.ngStrap.select', [ 'mgcrea.ngStrap.tooltip', 'mgcrea.ngSt
       };
       $select.$onKeyDown = function(evt) {
         if (!/(9|13|38|40)/.test(evt.keyCode)) return;
-        if (evt.keyCode !== 9) {
-          evt.preventDefault();
-          evt.stopPropagation();
-        }
+        evt.preventDefault();
+        evt.stopPropagation();
         if (options.multiple && evt.keyCode === 9) {
           return $select.hide();
         }
@@ -175,17 +166,6 @@ angular.module('mgcrea.ngStrap.select', [ 'mgcrea.ngStrap.tooltip', 'mgcrea.ngSt
         if (!options.multiple) {
           if (evt.keyCode === 38 && scope.$activeIndex > 0) scope.$activeIndex--; else if (evt.keyCode === 38 && scope.$activeIndex < 0) scope.$activeIndex = scope.$matches.length - 1; else if (evt.keyCode === 40 && scope.$activeIndex < scope.$matches.length - 1) scope.$activeIndex++; else if (angular.isUndefined(scope.$activeIndex)) scope.$activeIndex = 0;
           scope.$digest();
-        }
-      };
-      $select.$isIE = function() {
-        var ua = $window.navigator.userAgent;
-        return ua.indexOf('MSIE ') > 0 || ua.indexOf('Trident/') > 0 || ua.indexOf('Edge/') > 0;
-      };
-      $select.$selectScrollFix = function(e) {
-        if ($document[0].activeElement.tagName === 'UL') {
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          e.target.focus();
         }
       };
       var _show = $select.show;
@@ -203,7 +183,7 @@ angular.module('mgcrea.ngStrap.select', [ 'mgcrea.ngStrap.tooltip', 'mgcrea.ngSt
       };
       var _hide = $select.hide;
       $select.hide = function() {
-        if (!options.multiple && angular.isUndefined(controller.$modelValue)) {
+        if (!options.multiple && !controller.$modelValue) {
           scope.$activeIndex = -1;
         }
         $select.$element.off(isTouch ? 'touchstart' : 'mousedown', $select.$onMouseDown);
@@ -246,16 +226,13 @@ angular.module('mgcrea.ngStrap.select', [ 'mgcrea.ngStrap.tooltip', 'mgcrea.ngSt
       }
       var parsedOptions = $parseOptions(attr.bsOptions);
       var select = $select(element, controller, options);
-      if (select.$isIE()) {
-        element[0].addEventListener('blur', select.$selectScrollFix);
-      }
       var watchedOptions = parsedOptions.$match[7].replace(/\|.+/, '').trim();
-      scope.$watch(watchedOptions, function(newValue, oldValue) {
+      scope.$watchCollection(watchedOptions, function(newValue, oldValue) {
         parsedOptions.valuesFn(scope, controller).then(function(values) {
           select.update(values);
           controller.$render();
         });
-      }, true);
+      });
       scope.$watch(attr.ngModel, function(newValue, oldValue) {
         select.$updateActiveIndex();
         controller.$render();

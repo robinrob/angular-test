@@ -1,8 +1,9 @@
-require('../bower_components/angular/angular.js')
-require('../bower_components/jqueryui/jquery-ui.js');
+global.jQuery = require ('../bower_components/jquery/dist/jquery.min.js')
+global._ = require('../bower_components/lodash/lodash.min.js')
 
-require('../bower_components/ng-lodash/build/ng-lodash.min.js');
-require('../bower_components/angular-route/angular-route.js')
+require('../bower_components/jquery-ui/jquery-ui.min.js')
+require('../bower_components/angular/angular.min.js')
+require('../bower_components/angular-route/angular-route.min.js')
 require('../bower_components/angular-resource/angular-resource.min.js')
 require('../bower_components/angular-animate/angular-animate.min.js')
 
@@ -18,8 +19,7 @@ var testApp = angular.module('testApp', [
     'mgcrea.ngStrap',
     'testControllers',
     'testServices',
-    'testDirectives',
-    'ngLodash'
+    'testDirectives'
 ])
 
 testApp.config(['$routeProvider', '$locationProvider',
@@ -43,6 +43,9 @@ testApp.config(['$routeProvider', '$locationProvider',
                 templateUrl: 'partials/parentChild.html',
                 controller: 'ParentCtrl',
                 controllerAs: 'parent'
+            })
+            .when('/parent_and_child', {
+                templateUrl: 'partials/parent_and_child.html'
             })
 
         $locationProvider.html5Mode(false).hashPrefix('!');
